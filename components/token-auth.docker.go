@@ -5,14 +5,14 @@ import "os"
 func TokenAuthSrc(release string, host string, domain string, web string, secureMode string, redisHost string, dbhost string, user string, password string) []byte {
 
 	src :=
-		`FROM golang:latest AS builder
-RUN mkdir /app
-ADD . /app
+		`
+FROM golang:alpine AS build-env
+RUN apk --no-cache add build-base gcc
+ADD . /src
+RUN cd /src && go build -ldflags "-s -w" -o main .
+# final stage
+FROM alpine
 WORKDIR /app
-RUN CGO_ENABLED=0 GOOS=linux go build -o main .
-# second stage
-FROM alpine:latest AS production
-RUN apk add --no-cache libc6-compat
 ENV ADMIN_PASS=admin
 ENV REDIS_HOST=` + redisHost + `
 ENV REDIS_PORT=6379
@@ -30,7 +30,7 @@ ENV COOKIE_SECURE=` + secureMode + `
 ENV PORT=4000
 ENV GIN_MODE=` + release + `
 EXPOSE 4000
-COPY --from=builder /app .
+COPY --from=build-env /src/main /app/
 CMD ["./main"]
 `
 

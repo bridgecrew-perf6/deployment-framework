@@ -5,7 +5,7 @@ func BuildScript(tag string) []byte {
 	src := `
 echo "building IDP UI"
 cd idp &&
-docker build --tag idp:` + tag + ` . --no-cache &&
+docker build --tag idp-ui:` + tag + ` . --no-cache &&
 cd .. &&
 echo "building auth service"
 cd token-auth-svc &&
