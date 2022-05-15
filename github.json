@@ -1,0 +1,14 @@
+{
+  "repositories": [
+    {
+      "name": "token-auth-svc",
+      "folder": "./token-auth-svc",
+      "repo": "git@github.com:scblur869/secure-auth-service.git"
+    },
+    {
+      "name": "idp",
+      "folder": "./token-auth-svc",
+      "repo": "git@github.com:scblur869/YNH-Identity-Manager.git"
+    }
+  ]
+}

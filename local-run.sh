@@ -1,0 +1,12 @@
+./installer \
+ -descriptor=latest \
+ -host=http://192.168.1.30 \
+ -domain=.192.168.1.30 \
+ -idpui=http://192.168.1.30:8888 \
+ -idpsvc=http://192.168.1.30:4000 \
+ -mode=debug \
+ -redis-host=redis-svc \
+ -secure-mode=false \
+ -mysqluser=appuser \
+ -mysqlhost=192.168.1.4 \
+ -mysqlpass=scarypassword

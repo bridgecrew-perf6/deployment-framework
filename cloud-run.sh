@@ -1,0 +1,12 @@
+./installer \
+ -descriptor=latest \
+ -host=https://web.mydomain.com \
+ -domain=.mydomain.com \
+ -idpui=https://auth.mydomain.com \
+ -idpsvc=https://auth-api.mydomain.com \
+ -mode=debug \
+ -redis-host=redis-svc \
+ -secure-mode=true \
+ -mysqluser=appuser \
+ -mysqlhost=192.168.1.10 \
+ -mysqlpass=scarypassword
